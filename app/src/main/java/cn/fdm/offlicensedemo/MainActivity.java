@@ -1,7 +1,6 @@
 package cn.fdm.offlicensedemo;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,7 +23,16 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String lic = LicUtil.getLic();
+
+                LicUtil.licenseBean licenseBean = new LicUtil.licenseBean();
+                licenseBean.setAppId("cn.fdm.demo");
+                licenseBean.setIssuedTime(System.currentTimeMillis());
+                licenseBean.setNotAfter(1640966400000L);
+                licenseBean.setNotBefore(1538671712000L);
+                licenseBean.setCustomerInfo("亚马逊公司");
+
+                String lic = LicUtil.getLic(licenseBean);
+
                 tvLic.setText(lic);
                 if (LicUtil.checkLic(lic)){
                     tvResult.setText("验证成功");

@@ -3,7 +3,9 @@ package cn.fdm.offlicensedemo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,30 +18,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final EditText appId = findViewById(R.id.et_app_id);
+        final EditText notAfter = findViewById(R.id.et_not_after);
+        final EditText customer = findViewById(R.id.et_info);
         final TextView tvLic = findViewById(R.id.lic);
-        final TextView tvResult = findViewById(R.id.result);
         Button btn = findViewById(R.id.btn);
+        Button btnVerify = findViewById(R.id.btn_ver);
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 LicUtil.licenseBean licenseBean = new LicUtil.licenseBean();
-                licenseBean.setAppId("cn.fdm.demo");
+                licenseBean.setAppId(appId.getText().toString());
                 licenseBean.setIssuedTime(System.currentTimeMillis());
-                licenseBean.setNotAfter(1640966400000L);
-                licenseBean.setNotBefore(1538671712000L);
-                licenseBean.setCustomerInfo("亚马逊公司");
+                licenseBean.setNotAfter(Long.parseLong(notAfter.getText().toString()));
+                licenseBean.setNotBefore(System.currentTimeMillis());
+                licenseBean.setCustomerInfo(customer.getText().toString());
+                tvLic.setText(LicUtil.getLic(licenseBean));
+            }
+        });
 
-                String lic = LicUtil.getLic(licenseBean);
-
-                tvLic.setText(lic);
-                if (LicUtil.checkLic(lic)){
-                    tvResult.setText("验证成功");
-                }else {
-                    tvResult.setText("验证失败");
-                }
+        btnVerify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isChecked = LicUtil.checkLic(tvLic.getText().toString());
+                Toast.makeText(MainActivity.this, "result:" + isChecked, Toast.LENGTH_LONG).show();
             }
         });
     }
 }
+

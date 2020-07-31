@@ -25,11 +25,9 @@ public class MainActivity extends AppCompatActivity {
         Button btn = findViewById(R.id.btn);
         Button btnVerify = findViewById(R.id.btn_ver);
 
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 LicUtil.licenseBean licenseBean = new LicUtil.licenseBean();
                 licenseBean.setAppId(appId.getText().toString());
                 licenseBean.setIssuedTime(System.currentTimeMillis());
@@ -44,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean isChecked = LicUtil.checkLic(tvLic.getText().toString());
-                Toast.makeText(MainActivity.this, "result:" + isChecked, Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "验证结果:" + isChecked, Toast.LENGTH_LONG).show();
             }
         });
     }

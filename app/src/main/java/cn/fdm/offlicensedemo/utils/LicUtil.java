@@ -31,7 +31,6 @@ public class LicUtil {
 
     public static String getLic(licenseBean bean) {
 
-
         String lic = "";
         try {
             String aesKey = MyUtil.getRandomString(16);
@@ -39,7 +38,7 @@ public class LicUtil {
             String encDataLength = Integer.toHexString(encData.length());
             String sign = RSAUtil.sign(RSA_PRI_KEY, encData);
             lic = aesKey + encDataLength + encData + sign;
-            Log.d("bruce", "license:" + lic);
+            Log.d("bruce", lic);
             return lic;
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,7 +88,7 @@ public class LicUtil {
 
     }
 
-    public static class licenseBean{
+    public static class licenseBean {
 
         /**
          * appId : cn.fdm.offlicensedemo
@@ -145,7 +144,7 @@ public class LicUtil {
             this.customerInfo = customerInfo;
         }
 
-        private String toJson()  {
+        private String toJson() {
 
             JSONObject jo = new JSONObject();
             try {

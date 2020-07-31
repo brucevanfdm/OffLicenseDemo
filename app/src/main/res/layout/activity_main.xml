@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:orientation="vertical">
 
@@ -27,12 +26,12 @@
                 android:text="应用  ID :" />
 
             <EditText
-                android:hint="application id"
                 android:id="@+id/et_app_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@id/tv_id"
                 android:gravity="center|start"
+                android:hint="application id"
                 android:text="cn.fdm.offlicensedemo" />
         </RelativeLayout>
 
@@ -48,12 +47,12 @@
                 android:text="有效期至:" />
 
             <EditText
-                android:hint="expire day"
                 android:id="@+id/et_not_after"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@id/tv_not_after"
                 android:gravity="center|start"
+                android:hint="expire day"
                 android:inputType="datetime"
                 android:text="1640966400000" />
         </RelativeLayout>
@@ -70,35 +69,36 @@
                 android:text="客户信息:" />
 
             <EditText
-                android:hint="customer info"
                 android:id="@+id/et_info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@id/tv_info"
                 android:gravity="center|start"
+                android:hint="customer info"
                 android:text="亚马逊有限公司" />
         </RelativeLayout>
 
     </LinearLayout>
 
     <EditText
-        android:layout_below="@id/ll"
         android:id="@+id/lic"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="180dp"
+        android:layout_below="@id/ll"
         android:layout_margin="16dp"
         android:layout_marginTop="120dp"
-        android:gravity="start" />
+        android:gravity="start"
+        android:background="@null" />
 
 
     <RelativeLayout
-        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/lic"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:gravity="center">
 
         <Button
             android:id="@+id/btn"
@@ -107,11 +107,11 @@
             android:text="生成密钥" />
 
         <Button
-            android:layout_marginStart="80dp"
-            android:layout_toEndOf="@id/btn"
             android:id="@+id/btn_ver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_toEndOf="@id/btn"
             android:text="验证密钥" />
 
     </RelativeLayout>

@@ -54,7 +54,7 @@
                 android:gravity="center|start"
                 android:hint="expire day"
                 android:inputType="datetime"
-                android:text="1640966400000" />
+                android:text="1672502399000" />
         </RelativeLayout>
 
         <RelativeLayout
